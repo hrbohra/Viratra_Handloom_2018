@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "description": "Viratra saree pattern taxonomy. Hand-curated design categories used across the classifier, search index and catalog. These classes are bespoke domain knowledge, not derived from a single published paper.",
+  "patterns": [
+    { "id": 0, "key": "floral",    "label": "Floral",    "note": "Flowering vines, blossoms and leaf motifs; the most common decorative field." },
+    { "id": 1, "key": "paisley",   "label": "Paisley",   "note": "Mango / kairi (ambi) teardrop motif, often on pallu and border." },
+    { "id": 2, "key": "temple",    "label": "Temple",    "note": "Triangular temple-tower (gopuram) border, classic to South Indian silks." },
+    { "id": 3, "key": "checks",    "label": "Checks",    "note": "Grid / chequered fields, common in cotton handloom (e.g. Ilkal, Madras checks)." },
+    { "id": 4, "key": "stripes",   "label": "Stripes",   "note": "Directional line fields, warp or weft striping." },
+    { "id": 5, "key": "geometric", "label": "Geometric", "note": "Diamonds, zig-zags and lattice motifs; strong in Pochampally / ikat." },
+    { "id": 6, "key": "butta",     "label": "Butta",     "note": "Small repeated single motifs (buttis) scattered across the body." },
+    { "id": 7, "key": "abstract",  "label": "Abstract",  "note": "Free-form / non-repeating decorative fields that do not fit the above." }
+  ],
+  "regions": ["Kanchipuram", "Banarasi", "Pochampally", "Ilkal", "Chanderi", "Sambalpuri", "Paithani", "Mysore"],
+  "fabrics": ["Silk", "Cotton", "Cotton-Silk", "Tussar", "Georgette", "Brocade"]
+}

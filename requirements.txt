@@ -1,0 +1,20 @@
+# Viratra Handloom - Python engine dependencies
+#
+# The original 2018 build ran on Python 3.6 with the pinned versions noted in
+# the trailing comments. Those exact versions have no wheels for modern Python,
+# so the ranges below install a compatible, still-API-equivalent stack. The
+# code paths used here are unchanged since 2018.
+
+numpy>=1.16            # 2018: numpy==1.15.4
+opencv-python>=3.4     # 2018: opencv-python==3.4.3.18   (cv2)
+scikit-learn>=0.20     # 2018: scikit-learn==0.20.0      (RandomForest / SVM / NearestNeighbors / regression)
+scikit-image>=0.14     # 2018: scikit-image==0.14.1      (local_binary_pattern, gabor)
+Pillow>=5.0            # 2018: Pillow==5.3.0             (sample synthesis, image IO)
+faiss-cpu>=1.5         # 2018: faiss (built from source, v1.4); pip wheel used here
+
+# --- Optional: deep feature extraction (Layer 7) --------------------------
+# The original build used Keras 2.2 on TensorFlow 1.10 to pull VGG16 bottleneck
+# features. Install these on a supported Python to enable true CNN embeddings;
+# without them the engine falls back to a deterministic classical descriptor.
+# tensorflow==1.10.0
+# Keras==2.2.4

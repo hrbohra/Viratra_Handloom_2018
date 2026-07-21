@@ -1,0 +1,22 @@
+{
+  "name": "viratra-handloom",
+  "productName": "Viratra Handloom",
+  "version": "1.0.0",
+  "description": "Saree design intelligence system - pattern recognition, colour analysis and visual similarity search for a handloom catalog.",
+  "author": "Harsh Bohra",
+  "license": "MIT",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "electron .",
+    "setup": "python scripts/build_all.py",
+    "engine": "python scripts/serve.py",
+    "cli": "python cli/viratra.py"
+  },
+  "dependencies": {
+    "chart.js": "^2.9.4",
+    "python-shell": "^1.0.8"
+  },
+  "devDependencies": {
+    "electron": "^22.3.27"
+  }
+}
