@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' file: data:; script-src 'self'; style-src 'self' 'unsafe-inline'" />
+  <title>Viratra Handloom</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -------------------------------------------------------- -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">वि</div>
+        <div class="brand-text">
+          <div class="brand-name">Viratra</div>
+          <div class="brand-sub">Handloom Intelligence</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="analyze">
+          <span class="nav-ico">◈</span> Analyse Design
+        </button>
+        <button class="nav-item" data-view="catalog">
+          <span class="nav-ico">▤</span> Catalog
+        </button>
+        <button class="nav-item" data-view="dashboard">
+          <span class="nav-ico">◔</span> Dashboard
+        </button>
+      </nav>
+
+      <div class="engine-status" id="engineStatus">
+        <span class="dot" id="statusDot"></span>
+        <span id="statusText">connecting…</span>
+      </div>
+    </aside>
+
+    <!-- Main ----------------------------------------------------------- -->
+    <main class="main">
+
+      <!-- Analyse view ------------------------------------------------- -->
+      <section class="view active" id="view-analyze">
+        <header class="view-head">
+          <h1>Analyse a Design</h1>
+          <p>Upload a saree photograph to identify its pattern, extract its colour palette and find visually similar designs in the catalog.</p>
+        </header>
+
+        <div class="analyze-grid">
+          <div class="panel drop" id="dropZone">
+            <div class="drop-inner" id="dropInner">
+              <div class="drop-ico">⌾</div>
+              <p class="drop-title">Drop a saree photo here</p>
+              <p class="drop-sub">or</p>
+              <button class="btn primary" id="pickBtn">Choose Image…</button>
+              <p class="drop-hint">PNG · JPG · try the swatches in <code>data/samples/</code></p>
+            </div>
+            <img id="previewImg" class="preview" alt="" hidden />
+          </div>
+
+          <div class="panel result" id="resultPanel">
+            <div class="empty" id="resultEmpty">
+              <p>Analysis will appear here.</p>
+            </div>
+            <div id="resultBody" hidden>
+              <div class="result-row">
+                <div class="pattern-block">
+                  <div class="kicker">Detected pattern</div>
+                  <div class="pattern-name" id="patternName">—</div>
+                  <div class="pattern-conf" id="patternConf"></div>
+                  <div class="scores" id="patternScores"></div>
+                </div>
+                <div class="palette-block">
+                  <div class="kicker">Dominant palette</div>
+                  <div class="palette" id="palette"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel similar-panel" id="similarPanel" hidden>
+          <div class="panel-head">
+            <h2>Similar designs</h2>
+            <span class="muted" id="similarBackend"></span>
+          </div>
+          <div class="grid cards" id="similarGrid"></div>
+        </div>
+      </section>
+
+      <!-- Catalog view ------------------------------------------------- -->
+      <section class="view" id="view-catalog">
+        <header class="view-head">
+          <h1>Catalog</h1>
+          <p>Every saree the engine has fingerprinted. Click one to see look-alikes.</p>
+        </header>
+        <div class="filters" id="catalogFilters"></div>
+        <div class="grid cards" id="catalogGrid"></div>
+      </section>
+
+      <!-- Dashboard view ----------------------------------------------- -->
+      <section class="view" id="view-dashboard">
+        <header class="view-head">
+          <h1>Dashboard</h1>
+          <p>Sales and inventory intelligence across the 2018 season.</p>
+        </header>
+        <div class="kpis" id="kpis"></div>
+        <div class="charts">
+          <div class="panel chart-panel">
+            <div class="panel-head"><h2>Units sold by pattern</h2></div>
+            <canvas id="patternChart"></canvas>
+          </div>
+          <div class="panel chart-panel">
+            <div class="panel-head"><h2>Monthly revenue · 2018</h2></div>
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Saree detail modal ---------------------------------------------- -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="vendor/chart.min.js"></script>
+  <script src="charts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
