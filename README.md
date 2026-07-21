@@ -22,10 +22,8 @@ analytics.
 
 This repository is a **2018 retrospective** — a clean-room rebuild of a system I
 prototyped for a handloom business, reconstructed from the original research
-trail. The design notes that reconstruction is based on live in
-[`docs/2018_retrospective_build_Viratra_Handloom_Pattern_analysis.md`](docs/2018_retrospective_build_Viratra_Handloom_Pattern_analysis.md),
-which maps every layer to a datable 2018-or-earlier source (OpenCV tutorials,
-PyImageSearch, the Keras blog, FAISS, DeepFashion, …).
+trail, mapping every layer to a datable 2018-or-earlier source (OpenCV
+tutorials, PyImageSearch, the Keras blog, FAISS, DeepFashion, …).
 
 Two honest notes carried over from that analysis:
 

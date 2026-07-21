@@ -30,3 +30,6 @@ Thumbs.db
 
 # Claude Code session dir
 .claude/
+
+# Private design notes (not published)
+docs/2018_retrospective_build_Viratra_Handloom_Pattern_analysis.md
