@@ -67,7 +67,7 @@ function renderAnalysis (res) {
         <span class="val">${(v * 100).toFixed(0)}%</span>
       </div>`).join('')
   } else {
-    $('#patternName').textContent = '—'
+    $('#patternName').textContent = '-'
     $('#patternConf').textContent = 'classifier not built'
     $('#patternScores').innerHTML = ''
   }
@@ -117,7 +117,7 @@ async function renderCards (container, items, withSim) {
       <img class="thumb" src="${url}" alt="${s.title}" />
       <div class="cap">
         <div class="t">${s.title}</div>
-        <div class="s"><span class="badge">${s.pattern || '—'}</span><span>₹${Math.round(s.price || 0).toLocaleString()}</span></div>
+        <div class="s"><span class="badge">${s.pattern || '-'}</span><span>₹${Math.round(s.price || 0).toLocaleString()}</span></div>
       </div>`
     card.addEventListener('click', () => openSaree(s.id))
     container.appendChild(card)
@@ -190,7 +190,7 @@ async function loadDashboard () {
     <div class="kpi"><div class="n">${st.counts.sarees}</div><div class="l">Sarees indexed</div></div>
     <div class="kpi"><div class="n">${totalUnits.toLocaleString()}</div><div class="l">Units sold · 2018</div></div>
     <div class="kpi"><div class="n">₹${(totalRev / 100000).toFixed(1)}L</div><div class="l">Total revenue</div></div>
-    <div class="kpi"><div class="n" style="text-transform:capitalize">${top ? top.pattern : '—'}</div><div class="l">Best-selling pattern</div></div>`
+    <div class="kpi"><div class="n" style="text-transform:capitalize">${top ? top.pattern : '-'}</div><div class="l">Best-selling pattern</div></div>`
 
   VH_CHARTS.renderPattern($('#patternChart'), st.sales_by_pattern)
   VH_CHARTS.renderRevenue($('#revenueChart'), st.sales_timeseries)

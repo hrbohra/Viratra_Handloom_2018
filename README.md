@@ -1,9 +1,9 @@
-# Viratra Handloom — Saree Design Intelligence
+# Viratra Handloom - Saree Design Intelligence
 
 > A desktop application that looks at a photograph of a saree and tells you what
 > it is: its **pattern** (floral, paisley, temple, checks, stripes, geometric,
 > butta, abstract), its **dominant colour palette**, and the **visually similar
-> designs** already in the shop's catalog — plus a sales dashboard to see which
+> designs** already in the shop's catalog - plus a sales dashboard to see which
 > designs actually sell.
 
 Built for a handloom retailer to make sense of a large, fast-changing saree
@@ -20,7 +20,7 @@ analytics.
 
 ## Retrospective build
 
-This repository is a **2018 retrospective** — a clean-room rebuild of a system I
+This repository is a **2018 retrospective** - a clean-room rebuild of a system I
 prototyped for a handloom business, reconstructed from the original research
 trail, mapping every layer to a datable 2018-or-earlier source (OpenCV
 tutorials, PyImageSearch, the Keras blog, FAISS, DeepFashion, …).
@@ -28,7 +28,7 @@ tutorials, PyImageSearch, the Keras blog, FAISS, DeepFashion, …).
 Two honest notes carried over from that analysis:
 
 - **The saree taxonomy is bespoke.** No single 2018 paper defines the eight
-  pattern classes — they are hand-curated domain knowledge (see
+  pattern classes - they are hand-curated domain knowledge (see
   [`config/taxonomy.json`](config/taxonomy.json)), trained on a labelled set.
 - **The deep-feature backend degrades gracefully.** The original build pulled
   512-d VGG16 bottleneck features (Keras/TensorFlow). Where TensorFlow isn't
@@ -95,7 +95,7 @@ npm start
 ```
 
 `build_all.py` prints a held-out classification report; a fresh run scores
-**~95–98% accuracy** across the eight pattern classes on the synthetic set.
+**~95-98% accuracy** across the eight pattern classes on the synthetic set.
 
 ### Command-line interface
 
@@ -123,17 +123,17 @@ Similar designs:
 
 For each image the `Engine`:
 
-1. **Normalises** it (resize → grayscale/HSV) — `preprocess.prepare`.
-2. **Extracts colours** with k-means over the pixels — `color.dominant_colors`.
+1. **Normalises** it (resize → grayscale/HSV) - `preprocess.prepare`.
+2. **Extracts colours** with k-means over the pixels - `color.dominant_colors`.
 3. **Classifies the pattern** from a colour-histogram + LBP + Gabor + shape
-   feature vector through a scaled RandomForest — `patterns` + `pipeline.classify`.
-4. **Computes the design fingerprint** (VGG16 or classical, L2-normalised) —
+   feature vector through a scaled RandomForest - `patterns` + `pipeline.classify`.
+4. **Computes the design fingerprint** (VGG16 or classical, L2-normalised) -
    `embeddings.embed`.
 5. **Finds look-alikes** by inner-product (cosine) search over the FAISS index,
-   resolving hits back to catalog records — `search` + `pipeline.similar`.
+   resolving hits back to catalog records - `search` + `pipeline.similar`.
 
 The dashboard joins each saree's attributes to its 2018 sales history and trains
-a RandomForest regressor to surface the demand drivers — `sales.SalesModel`.
+a RandomForest regressor to surface the demand drivers - `sales.SalesModel`.
 
 ---
 
@@ -146,7 +146,7 @@ viratra-handloom/
 │   ├── preload.js           audited window.viratra bridge
 │   ├── ipc/python-bridge.js Node ↔ Python (python-shell, JSON protocol)
 │   └── renderer/            UI (index.html, styles.css, app.js, charts.js)
-├── viratra/                 Python engine package (Layers 2–9)
+├── viratra/                 Python engine package (Layers 2-9)
 ├── scripts/                 build_all, generate_samples, seed_db, train_*, serve
 ├── cli/viratra.py           scriptable CLI
 ├── config/taxonomy.json     the 8 saree pattern classes
