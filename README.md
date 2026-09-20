@@ -20,7 +20,7 @@ analytics.
 
 ## Background
 
-Viratra Handloom Tex is a saree retailer in Coimbatore. Between 2019 and 2021 I
+Viratra Handloom Tex is a saree retailer in Coimbatore. Between 2020 and 2021 I
 led the store's digital work, and this system came out of one question the shop
 asked every season: which designs do we have, which ones look alike, and which
 ones sell.
