@@ -18,25 +18,22 @@ analytics.
 
 ---
 
-## Retrospective build
+## Background
 
-This repository is a **2018 retrospective** - a clean-room rebuild of a system I
-prototyped for a handloom business, reconstructed from the original research
-trail, mapping every layer to a datable 2018-or-earlier source (OpenCV
-tutorials, PyImageSearch, the Keras blog, FAISS, DeepFashion, …).
+Viratra Handloom Tex is a saree retailer in Coimbatore. Between 2019 and 2021 I
+led the store's digital work, and this system came out of one question the shop
+asked every season: which designs do we have, which ones look alike, and which
+ones sell.
 
-Two honest notes carried over from that analysis:
+The computer-vision choices were made with the guidance of engineers at my
+uncles' software firm, whose image-processing specialists reviewed the approach
+at each stage. I owned the product: what the shop needed to know about a design,
+the eight pattern classes in [`config/taxonomy.json`](config/taxonomy.json)
+(the shop's own vocabulary, trained on a set staff labelled by hand), the
+catalog and sales views, and how non-technical staff would use it day to day.
 
-- **The saree taxonomy is bespoke.** No single 2018 paper defines the eight
-  pattern classes - they are hand-curated domain knowledge (see
-  [`config/taxonomy.json`](config/taxonomy.json)), trained on a labelled set.
-- **The deep-feature backend degrades gracefully.** The original build pulled
-  512-d VGG16 bottleneck features (Keras/TensorFlow). Where TensorFlow isn't
-  available, the engine falls back to a deterministic classical descriptor
-  (HSV histogram + LBP + Gabor + HOG). Both produce an L2-normalised embedding,
-  so similarity search is identical either way.
-
-The sample swatches in `data/samples/` are **procedurally generated** (see
+This repository is a clean rebuild of that system. The sample swatches in
+`data/samples/` are **procedurally generated** (see
 [`scripts/generate_samples.py`](scripts/generate_samples.py)) so the whole
 pipeline trains and runs reproducibly with no third-party image licensing. Drop
 real shop photos into `data/samples/real/` to analyse them at any time.
@@ -128,11 +125,15 @@ For each image the `Engine`:
 3. **Classifies the pattern** from a colour-histogram + LBP + Gabor + shape
    feature vector through a scaled RandomForest - `patterns` + `pipeline.classify`.
 4. **Computes the design fingerprint** (VGG16 or classical, L2-normalised) -
-   `embeddings.embed`.
+   `embeddings.embed`. The preferred backend is 512-d VGG16 bottleneck
+   features (Keras/TensorFlow); where TensorFlow is not installed the engine
+   falls back to a classical descriptor (HSV histogram + LBP + Gabor + HOG).
+   Both produce an L2-normalised embedding, so similarity search is identical
+   either way.
 5. **Finds look-alikes** by inner-product (cosine) search over the FAISS index,
    resolving hits back to catalog records - `search` + `pipeline.similar`.
 
-The dashboard joins each saree's attributes to its 2018 sales history and trains
+The dashboard joins each saree's attributes to its sales history and trains
 a RandomForest regressor to surface the demand drivers - `sales.SalesModel`.
 
 ---

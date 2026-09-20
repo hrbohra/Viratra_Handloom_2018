@@ -1,8 +1,8 @@
 """Layer 7 - Deep-feature "design fingerprint" extraction.
 
-The original 2018 build pulled 512-d bottleneck features from a headless VGG16
-(Keras / TensorFlow, ImageNet weights, global-average pooling). That remains the
-preferred backend and is used automatically when Keras is importable.
+The preferred backend pulls 512-d bottleneck features from a headless VGG16
+(Keras / TensorFlow, ImageNet weights, global-average pooling) and is used
+automatically when Keras is importable.
 
 When Keras/TensorFlow is not installed, the engine falls back to a
 deterministic classical descriptor (HSV colour histogram + LBP + Gabor + HOG).

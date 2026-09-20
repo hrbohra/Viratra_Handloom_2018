@@ -1,9 +1,9 @@
 """Layer 8 - Similar-design search.
 
 Indexes the design fingerprints and returns nearest neighbours for
-"find sarees that look like this one". Uses FAISS when available (the 2018
-choice) and falls back to scikit-learn NearestNeighbors for small catalogs -
-exactly the trade-off called out in the project notes.
+"find sarees that look like this one". Uses FAISS when available and falls
+back to scikit-learn NearestNeighbors, which is all a catalog of a few thousand
+designs needs.
 
 Fingerprints are L2-normalised, so inner-product search is cosine similarity.
 """
